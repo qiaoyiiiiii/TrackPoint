@@ -15,7 +15,7 @@ import org.hibernate.validator.constraints.Length;
 * 
 * @TableName error
 */
-public class Error extends Event implements Serializable {
+public class Error implements Serializable {
 
     /**
     * 
@@ -37,10 +37,6 @@ public class Error extends Event implements Serializable {
     @ApiModelProperty("")
     @Length(max= 255,message="编码长度不能超过255")
     private String errorStack;
-
-    public Error(Integer userId, String browser, String version, String timestamp, Integer type) {
-        super(userId, browser, version, timestamp, type);
-    }
 
     /**
     * 

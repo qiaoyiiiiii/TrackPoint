@@ -11,4 +11,5 @@ import org.springframework.stereotype.Service;
 public class ErrorServiceImpl extends ServiceImpl<ErrorMapper, Error> implements ErrorService {
     @Resource
     private ErrorMapper errorMapper;
+
 } 

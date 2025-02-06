@@ -13,7 +13,7 @@ import org.hibernate.validator.constraints.Length;
 * 
 * @TableName button
 */
-public class Button extends Event implements Serializable{
+public class Button implements Serializable{
 
     /**
     * 

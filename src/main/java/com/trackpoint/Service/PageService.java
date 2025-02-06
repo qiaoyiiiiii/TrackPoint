@@ -6,5 +6,4 @@ import org.springframework.stereotype.Service;
 
 @Service
 public interface PageService extends IService<Page> {
-    public void savePage(Integer pageId,String pagePath,String referrer);
 }

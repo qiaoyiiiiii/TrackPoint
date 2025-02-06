@@ -11,8 +11,4 @@ import org.springframework.stereotype.Service;
 public class PageServiceImpl extends ServiceImpl<PageMapper, Page> implements PageService {
     @Resource
     private PageMapper pageMapper;
-
-    public void savePage(Integer pageId,String pagePath,String referrer){
-
-    }
 }

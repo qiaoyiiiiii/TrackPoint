@@ -13,7 +13,7 @@ import org.hibernate.validator.constraints.Length;
 * 
 * @TableName page
 */
-public class Page extends Event implements Serializable {
+public class Page implements Serializable {
 
     /**
     * 
@@ -38,9 +38,6 @@ public class Page extends Event implements Serializable {
     private String referrer;
 
 
-    public Page() {
-        super();
-    }
 
     /**
     * 

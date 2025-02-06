@@ -7,6 +7,9 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 import io.swagger.annotations.ApiModelProperty;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import org.hibernate.validator.constraints.Length;
 
 /**
@@ -18,9 +21,11 @@ public class Event implements Serializable {
     /**
     * 主键，事件标识符
     */
+    @Id
     @NotNull(message="[主键，事件标识符]不能为空")
     @ApiModelProperty("主键，事件标识符")
-    private Integer event;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer EventId;
     /**
     * 用户ID
     */
@@ -58,8 +63,8 @@ public class Event implements Serializable {
     /**
     * 主键，事件标识符
     */
-    public void setEvent(Integer event){
-    this.event = event;
+    public void setEventId(Integer EventId){
+    this.EventId = EventId;
     }
 
     /**
@@ -101,8 +106,8 @@ public class Event implements Serializable {
     /**
     * 主键，事件标识符
     */
-    public Integer getEvent(){
-    return this.event;
+    public Integer getEventId(){
+    return this.EventId;
     }
 
 
@@ -145,12 +150,11 @@ public class Event implements Serializable {
 
     }
 
-    public Event(Integer userId, String browser, String version, String timestamp, Integer type){
+    public Event(Integer userId, String browser, String version, String timestamp){
         this.userId = userId;
         this.browser = browser;
         this.version = version;
         this.timestamp = timestamp;
-        this.type = type;
     }
 
 

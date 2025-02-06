@@ -11,5 +11,9 @@ import org.springframework.stereotype.Service;
 public class EventServiceImpl extends ServiceImpl<EventMapper, Event> implements EventService {
     @Resource
     private EventMapper eventMapper;
+    public Integer saveEvent(Event event) {
+        eventMapper.insertEvent(event); // 保存 Event
+        return event.getEventId(); // 返回生成的 eventId
+    }
 
 }

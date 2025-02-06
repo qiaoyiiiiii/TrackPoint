@@ -13,7 +13,7 @@ import org.hibernate.validator.constraints.Length;
 * 
 * @TableName form
 */
-public class Form extends Event implements Serializable {
+public class Form implements Serializable {
 
     /**
     * 
@@ -34,9 +34,6 @@ public class Form extends Event implements Serializable {
     @Length(max= 255,message="编码长度不能超过255")
     private String form;
 
-    public Form(Integer userId, String browser, String version, String timestamp, Integer type) {
-        super(userId, browser, version, timestamp, type);
-    }
 
     /**
     * 
