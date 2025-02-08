@@ -40,6 +40,11 @@ public class EventController {
         Integer userId=(Integer)param.get("userId");
         String time=(String)param.get("timestamp");
         String version=(String)param.get("version");
+        // 添加空值检查
+        if (userId == null || browser == null || time == null || version == null) {
+            return 400; // 返回错误代码
+        }
+        if(browser.equals(null)||userId==null||time==null||version==null) return 400;
         Event e=new Event(userId,browser,version,time);
         Integer eventId=0;
         switch (queryParam.getEventName()) {
@@ -59,13 +64,15 @@ public class EventController {
             eventService.saveEvent(e); // 保存 Event
             error.setErrorId(e.getEventId()); // 传递 eventId
             error.setErrorMessage((String)param.get("errorMessage")); // 设置错误信息
+            error.setErrorStack((String)param.get("errorStack"));
             errorService.save(error); // 保存错误信息
             return 200;
             case "form":e.setType(2);
             eventService.saveEvent(e); // 保存 Event
             Form form=new Form();
             form.setFormId(e.getEventId()); // 传递 eventId
-            form.setForm((String)param.get("formData")); // 设置表单数据
+            form.setForm((String)param.get("form")); // 设置表单数据
+            form.setValid((Integer)param.get("valid"));
             formService.save(form); // 保存表单信息
             return 200;
             case "button":e.setType(0);
