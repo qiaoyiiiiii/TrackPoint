@@ -20,7 +20,7 @@ public interface ButtonService extends IService<Button> {
     int SalesB();
     int SalesC();
     int getButtonCountByTimeRange(Integer buttonType, String startTime, String endTime);
-    IPage<Button> pageCC(Page<Button> page, 
+    IPage<Map<String, Object>> pageCC(Page<Button> page,
                         Wrapper<Button> queryWrapper,
                         String startTime, 
                         String endTime);

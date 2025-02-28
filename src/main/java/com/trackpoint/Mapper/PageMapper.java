@@ -15,7 +15,7 @@ public interface PageMapper extends BaseMapper<Page> {
            "WHERE p.pagePath = #{page} " +
            "AND e.timestamp >= STR_TO_DATE(#{startTime}, '%Y-%m-%d %H:%i:%s') " +
            "AND e.timestamp <= STR_TO_DATE(#{endTime}, '%Y-%m-%d %H:%i:%s')")
-    int countPage(@Param("page") Integer page,
+    int countPage(@Param("page") String page,
                                 @Param("startTime") String startTime, 
                                 @Param("endTime") String endTime);
 }

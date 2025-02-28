@@ -20,7 +20,6 @@ import jakarta.annotation.Resource;
 
 import java.util.HashMap;
 
-import javax.print.DocFlavor.STRING;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -94,8 +93,10 @@ public class EventController {
     }
 
     @PostMapping("/update")
-    public int update(Event event){
-        return eventService.saveOrUpdate(event)?200:400;
+    public int update(@RequestBody Event event){
+        System.out.println("eventId:"+event.getEventId());
+        System.out.println("event:"+event.getTimestamp());
+        return eventService.updateById(event)?200:400;
     }
 
     @PostMapping("/listPage")

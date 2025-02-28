@@ -12,7 +12,7 @@ public class PageServiceImpl extends ServiceImpl<PageMapper, Page> implements Pa
     @Resource
     private PageMapper pageMapper;
 
-    public int getPageCount(Integer page, String startTime, String endTime) {
+    public int getPageCount(String page, String startTime, String endTime) {
         return pageMapper.countPage(page, startTime, endTime);
     }
 }

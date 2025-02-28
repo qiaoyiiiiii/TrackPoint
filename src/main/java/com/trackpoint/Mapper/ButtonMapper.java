@@ -10,6 +10,8 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Map;
+
 @Mapper
 public interface ButtonMapper extends BaseMapper<Button> {
     // 获取购买数量A
@@ -43,8 +45,8 @@ public interface ButtonMapper extends BaseMapper<Button> {
     @Select("SELECT * FROM button b " +
     "LEFT JOIN event e ON e.eventId = b.buttonId " +
     "${ew.customSqlSegment} AND e.timestamp BETWEEN #{startTime} AND #{endTime}")
-    public IPage<Button> pageCC(IPage<Button> page,
-                            @Param(Constants.WRAPPER) Wrapper<Button> wrapper,
-                            @Param("startTime") String startTime,
-                            @Param("endTime") String endTime);
+    public IPage<Map<String, Object>> pageCC(IPage<Button> page,
+                                             @Param(Constants.WRAPPER) Wrapper<Button> wrapper,
+                                             @Param("startTime") String startTime,
+                                             @Param("endTime") String endTime);
 }                        

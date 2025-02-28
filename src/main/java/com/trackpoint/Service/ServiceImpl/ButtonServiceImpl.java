@@ -44,7 +44,7 @@ public class ButtonServiceImpl extends ServiceImpl<ButtonMapper, Button> impleme
     }
 
     @Override
-    public IPage<Button> pageCC(Page<Button> page, 
+    public IPage<Map<String, Object>> pageCC(Page<Button> page,
                               Wrapper<Button> wrapper,
                               String startTime, 
                               String endTime) {

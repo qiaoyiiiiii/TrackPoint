@@ -8,5 +8,5 @@ import org.springframework.stereotype.Service;
 @Service
 public interface PageService extends IService<Page> {
 
-    int getPageCount(Integer page, String startTime, String endTime);
+    int getPageCount(String page, String startTime, String endTime);
 }

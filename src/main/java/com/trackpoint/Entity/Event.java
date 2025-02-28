@@ -6,6 +6,8 @@ import javax.validation.constraints.NotNull;
 
 import java.io.Serializable;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModelProperty;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,10 +23,9 @@ public class Event implements Serializable {
     /**
     * 主键，事件标识符
     */
-    @Id
     @NotNull(message="[主键，事件标识符]不能为空")
     @ApiModelProperty("主键，事件标识符")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @TableId(value = "EventId", type = IdType.AUTO)
     private Integer EventId;
     /**
     * 用户ID
