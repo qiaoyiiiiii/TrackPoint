@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebSocket Test</title>
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script type="text/javascript">
+        var stompClient = null;
+
+        function connect() {
+            var socket = new SockJS('/ws');
+            stompClient = Stomp.over(socket);
+            stompClient.connect({}, function (frame) {
+                console.log('Connected: ' + frame);
+                // 订阅 /topic/public 路径
+                stompClient.subscribe('/topic/public', function (message) {
+                    console.log('Received message: ' + message.body)
+                    showMessage(JSON.parse(message.body));
+                });
+            });
+        }
+
+        function requestSalesData() {
+            stompClient.send("/app/sales", {}, JSON.stringify());
+        }
+
+        function showMessage(message) {
+            var response = document.getElementById('response');
+            response.innerHTML = ''; // 清空之前的显示内容
+            var p = document.createElement('p');
+            p.style.wordWrap = 'break-word';
+            p.appendChild(document.createTextNode(JSON.stringify(message)));
+            response.appendChild(p);
+        }
+
+        window.onload = connect;
+    </script>
+</head>
+<body>
+<h1>WebSocket Test</h1>
+<div>
+    <button onclick="requestSalesData()">Request Sales Data</button>
+</div>
+<div id="response"></div>
+</body>
+</html>
