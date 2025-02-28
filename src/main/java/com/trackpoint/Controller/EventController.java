@@ -1,16 +1,21 @@
 package com.trackpoint.Controller;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.trackpoint.Service.EventService;
 import com.trackpoint.Service.ErrorService;
-import com.trackpoint.Controller.Entity.Button;
-import com.trackpoint.Controller.Entity.Error;
-import com.trackpoint.Controller.Entity.Event;
-import com.trackpoint.Controller.Entity.Form;
-import com.trackpoint.Controller.Entity.Page;
+import com.trackpoint.Entity.Button;
+import com.trackpoint.Entity.Error;
+import com.trackpoint.Entity.Event;
+import com.trackpoint.Entity.Form;
+import com.trackpoint.Entity.Page;
 import com.trackpoint.Service.ButtonService;
 import com.trackpoint.Service.FormService;
 import com.trackpoint.Service.PageService;
+import com.trackpoint.Utils.QueryPageParam;
 import com.trackpoint.Utils.QueryParam;
+import com.trackpoint.Utils.Results;
 import jakarta.annotation.Resource;
 
 import java.util.HashMap;
@@ -86,7 +91,30 @@ public class EventController {
             return 200;
             default:return 400;
         }
-
     }
 
+    @PostMapping("/update")
+    public int update(Event event){
+        return eventService.saveOrUpdate(event)?200:400;
+    }
+
+    @PostMapping("/listPage")
+    public Results listPage(@RequestBody QueryPageParam query) {
+        HashMap param=query.getParam();
+        String type = (String) param.get("type");
+        String startTime = (String) param.get("startTime");
+        String endTime = (String) param.get("endTime");
+
+        com.baomidou.mybatisplus.extension.plugins.pagination.Page page = new com.baomidou.mybatisplus.extension.plugins.pagination.Page<>();
+        page.setCurrent(query.getPageNum());
+        page.setSize(query.getPageSize());
+
+        LambdaQueryWrapper<Button> queryWrapper = new LambdaQueryWrapper<>();
+        if (StringUtils.isNotBlank(type) && !"null".equals(type)) {
+            queryWrapper.eq(Button::getButton, type);
+        }
+        IPage result = buttonService.pageCC(page, queryWrapper, startTime, endTime); // 传递 startTime 和 endTime
+
+        return Results.success(result.getRecords(), result.getTotal());
+    }
 }

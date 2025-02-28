@@ -1,25 +1,26 @@
 package com.trackpoint.Utils;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Data
-@NoArgsConstructor
 public class Results {
-    private int status;
-    private String message;
+    private int code;
+    private String msg;
+    private Object data;
+    private Long total;
 
-    private void setStatus(int status){
-        this.status = status;
-    }
-    private void setMessage(String message) {
-        this.message = message;
-    }
-    private Results(int status, String message) {
-        this.status = status;
-        this.message = message;
-    }
-    public static Results fail(){return new Results(400,"失败");}
-    public static Results success(){return new Results(200,"成功");}
+    public static Results fail(){return result(400,"失败",null,0L);}
+    public static Results success(){return result(200,"成功",null,0L);}
+    public static Results success(Object data) {return result(200,"成功",data,0L);}
+    public static Results success(Object data,Long total) {return result(200,"成功",data,total);}
 
+    private static Results result(int code, String msg, Object data, Long total) {
+        Results result = new Results();
+        result.setCode(code);
+        result.setMsg(msg);
+        result.setData(data);
+        result.setTotal(total);
+        return result;
+    }
 }
+

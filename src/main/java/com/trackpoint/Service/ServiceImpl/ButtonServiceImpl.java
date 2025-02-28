@@ -1,11 +1,18 @@
 package com.trackpoint.Service.ServiceImpl;
 
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.trackpoint.Controller.Entity.Button;
+import com.trackpoint.Entity.Button;
 import com.trackpoint.Mapper.ButtonMapper;
 import com.trackpoint.Service.ButtonService;
 import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
+import org.w3c.dom.stylesheets.LinkStyle;
+
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class ButtonServiceImpl extends ServiceImpl<ButtonMapper, Button> implements ButtonService {
@@ -29,5 +36,18 @@ public class ButtonServiceImpl extends ServiceImpl<ButtonMapper, Button> impleme
     }
     public int SalesC(){
         return buttonMapper.countGoodsC();
+    }
+
+    @Override
+    public int getButtonCountByTimeRange(Integer buttonType, String startTime, String endTime) {
+        return buttonMapper.countButtonsByTypeAndTime(buttonType, startTime, endTime);
+    }
+
+    @Override
+    public IPage<Button> pageCC(Page<Button> page, 
+                              Wrapper<Button> wrapper,
+                              String startTime, 
+                              String endTime) {
+        return buttonMapper.pageCC(page, wrapper, startTime, endTime);
     }
 }

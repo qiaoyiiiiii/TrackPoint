@@ -1,4 +1,4 @@
-package com.trackpoint.Controller.Entity;
+package com.trackpoint.Entity;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;

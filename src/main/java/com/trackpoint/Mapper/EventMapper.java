@@ -1,12 +1,14 @@
 package com.trackpoint.Mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import com.trackpoint.Controller.Entity.Event;
+import com.trackpoint.Entity.Event;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 @Mapper
 public interface EventMapper extends BaseMapper<Event> {
@@ -17,4 +19,7 @@ public interface EventMapper extends BaseMapper<Event> {
     // 获取去重的 userId 数量
     @Select("SELECT COUNT(DISTINCT userId) FROM event")
     int countUserIds();
+
+    @Select("SELECT * FROM event WHERE buttonId = #{buttonId}")
+    List<Event> selectByButtonId(Integer buttonId);
 }

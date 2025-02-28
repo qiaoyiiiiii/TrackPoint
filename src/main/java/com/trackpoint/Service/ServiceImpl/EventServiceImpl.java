@@ -1,7 +1,7 @@
 package com.trackpoint.Service.ServiceImpl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.trackpoint.Controller.Entity.Event;
+import com.trackpoint.Entity.Event;
 import com.trackpoint.Mapper.EventMapper;
 import com.trackpoint.Service.EventService;
 import jakarta.annotation.Resource;

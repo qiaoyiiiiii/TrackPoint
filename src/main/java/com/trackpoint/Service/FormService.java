@@ -1,7 +1,7 @@
 package com.trackpoint.Service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.trackpoint.Controller.Entity.Form;
+import com.trackpoint.Entity.Form;
 
 import org.springframework.stereotype.Service;
 

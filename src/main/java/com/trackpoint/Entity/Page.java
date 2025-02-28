@@ -1,4 +1,4 @@
-package com.trackpoint.Controller.Entity;
+package com.trackpoint.Entity;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -82,4 +82,11 @@ public class Page implements Serializable {
     return this.referrer;
     }
 
+    public void setSize(int pageSize) {
+
+    }
+
+    public void setCurrent(int pageNum) {
+
+    }
 }
