@@ -1,7 +1,7 @@
 package com.trackpoint.Service.ServiceImpl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.trackpoint.Entity.Page;
+import com.trackpoint.Controller.Entity.Page;
 import com.trackpoint.Mapper.PageMapper;
 import com.trackpoint.Service.PageService;
 import jakarta.annotation.Resource;

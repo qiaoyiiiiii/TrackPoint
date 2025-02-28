@@ -1,12 +1,12 @@
 package com.trackpoint.Controller;
 
-import com.trackpoint.Entity.Button;
-import com.trackpoint.Entity.Error;
-import com.trackpoint.Entity.Event;
-import com.trackpoint.Entity.Form;
-import com.trackpoint.Entity.Page;
 import com.trackpoint.Service.EventService;
 import com.trackpoint.Service.ErrorService;
+import com.trackpoint.Controller.Entity.Button;
+import com.trackpoint.Controller.Entity.Error;
+import com.trackpoint.Controller.Entity.Event;
+import com.trackpoint.Controller.Entity.Form;
+import com.trackpoint.Controller.Entity.Page;
 import com.trackpoint.Service.ButtonService;
 import com.trackpoint.Service.FormService;
 import com.trackpoint.Service.PageService;
